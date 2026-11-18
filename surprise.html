@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5d9e">
+
+    <title>A Surprise for Ayushi</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body data-page="surprise">
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <a class="brand" href="index.html">
+            ✨ For Ayushi
+        </a>
+
+        <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="memories.html">Memories</a>
+            <a href="letter.html">A Letter</a>
+            <a href="celebration.html">Celebrate</a>
+            <a class="active" href="surprise.html">Surprise</a>
+            <a href="final.html">Final Wish ❤️</a>
+        </nav>
+
+    </header>
+
+    <!-- SURPRISE SECTION -->
+
+    <main class="surprise-wrap">
+
+        <div class="surprise-card">
+
+            <div class="gift-icon">🎁</div>
+
+            <p class="eyebrow">
+                A little something just for you
+            </p>
+
+            <h1>
+                One more thing,<br>
+                <span>Ayushi!</span>
+            </h1>
+
+            <p>
+                Friendship is made of tiny moments, endless laughter
+                and people who make life feel special.
+                Thank you for being you.
+            </p>
+
+            <button class="btn primary" id="revealBtn">
+                Open your surprise 💖
+            </button>
+
+            <!-- HIDDEN SURPRISE MESSAGE -->
+
+            <div id="hiddenSurprise"
+                class="hidden-surprise"
+                aria-live="polite">
+
+                <h2>You are one in a million! 🌟</h2>
+
+                <p>
+                    May your life be filled with beautiful surprises,
+                    unforgettable adventures and reasons to smile
+                    every single day.
+                </p>
+
+                <p class="big-hearts">
+                    💗 💖 💝 💕
+                </p>
+
+            </div>
+
+            <!-- FINAL BIRTHDAY PAGE BUTTON -->
+
+            <div class="center" style="margin-top: 30px;">
+
+                <a class="btn primary" href="final.html">
+                    Once Again, Happy Birthday Ayushi! ❤️🎂
+                </a>
+
+            </div>
+
+        </div>
+
+        <a class="back-link" href="index.html">
+            ↶ Start the birthday journey again
+        </a>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        Happy Birthday, Ayushi. Keep shining! 🌈
+    </footer>
+
+    <!-- BACKGROUND MUSIC -->
+
+    <audio
+        id="bgMusic"
+        src="music/birthday-song.mp3"
+        preload="auto"
+        loop>
+    </audio>
+
+    <button class="music-toggle"
+        id="musicBtn"
+        aria-label="Play or pause background music">
+
+        ♫ <span>Music</span>
+
+    </button>
+
+    <!-- BACKGROUND MUSIC MEMORY -->
+
+    <script>
+
+        (() => {
+
+            const music = document.getElementById("bgMusic");
+            const btn = document.getElementById("musicBtn");
+
+            const savedTime = localStorage.getItem("musicTime");
+
+            const wasPlaying =
+                localStorage.getItem("musicPlaying") === "true";
+
+            // Restore music position
+
+            music.addEventListener("loadedmetadata", () => {
+
+                if (savedTime !== null && music.duration > 0) {
+
+                    const position = Number(savedTime);
+
+                    if (Number.isFinite(position)) {
+                        music.currentTime = position % music.duration;
+                    }
+
+                }
+
+                // Resume previous music
+
+                if (wasPlaying) {
+
+                    music.play().catch(() => {
+
+                        console.log(
+                            "Click the Music button to start playback."
+                        );
+
+                    });
+
+                }
+
+            });
+
+            // Play and pause music
+
+            btn.addEventListener("click", () => {
+
+                if (music.paused) {
+
+                    music.play().then(() => {
+
+                        localStorage.setItem(
+                            "musicPlaying",
+                            "true"
+                        );
+
+                    }).catch(() => {
+
+                        localStorage.setItem(
+                            "musicPlaying",
+                            "false"
+                        );
+
+                    });
+
+                } else {
+
+                    music.pause();
+
+                    localStorage.setItem(
+                        "musicPlaying",
+                        "false"
+                    );
+
+                }
+
+            });
+
+            // Save music position
+
+            music.addEventListener("timeupdate", () => {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+            // Save before leaving page
+
+            window.addEventListener("pagehide", () => {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>

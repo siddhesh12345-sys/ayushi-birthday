@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories | Ayushi</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body data-page="memories">
+
+    <header class="site-header">
+        <a class="brand" href="index.html">✨ For Ayushi</a>
+
+        <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">☰</button>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a class="active" href="memories.html">Memories</a>
+            <a href="letter.html">A Letter</a>
+            <a href="celebration.html">Celebrate</a>
+            <a href="surprise.html">Surprise</a>
+        </nav>
+    </header>
+
+    <main class="page-wrap">
+
+        <p class="eyebrow">Little moments, forever memories</p>
+
+        <h1 class="page-title">
+            Our <span>Memory Lane</span> 📸
+        </h1>
+
+        <p class="page-intro">
+            Every picture has a story. Here are a few moments worth keeping close.
+        </p>
+
+        <section class="gallery">
+
+            <figure class="memory-card tall">
+                <img src="images/photo1.jpg"
+                    alt="Memory one"
+                    onerror="this.src='https://placehold.co/700x900/ffc4dc/85305a?text=Add+photo1.jpg'">
+
+                <figcaption>
+                    My favourite human, my forever troublemaker ❤️💕
+                </figcaption>
+            </figure>
+
+            <figure class="memory-card">
+                <img src="images/photo2.jpg"
+                    alt="Memory two"
+                    onerror="this.src='https://placehold.co/700x650/ffe0a8/854d25?text=Add+photo2.jpg'">
+
+                <figcaption>
+                    More than a bestie, less than a headache 😂💗
+                </figcaption>
+            </figure>
+
+            <figure class="memory-card">
+                <img src="images/photo3.jpg"
+                    alt="Memory three"
+                    onerror="this.src='https://placehold.co/700x650/c9e9ff/285a82?text=Add+photo3.jpg'">
+
+                <figcaption>
+                    Distance can never change a bond that lives in the heart 🌍❤️
+                </figcaption>
+            </figure>
+
+            <figure class="memory-card wide">
+                <img src="images/photo4.jpg"
+                    alt="Memory four"
+                    onerror="this.src='https://placehold.co/1100x600/d9d0ff/513d83?text=Add+photo4.jpg'">
+
+                <figcaption>
+                    Friends like you make life a little more beautiful 🦋❤️
+                </figcaption>
+            </figure>
+
+        </section>
+
+        <div class="center">
+            <a class="btn primary" href="letter.html">
+                Next: A little letter 💌
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        More photos, more smiles, more memories. 💗
+    </footer>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="music/birthday-song.mp3" preload="auto" loop></audio>
+
+    <button class="music-toggle" id="musicBtn"
+        aria-label="Play or pause background music">
+        ♫ <span>Music</span>
+    </button>
+
+    <!-- Remember music position between pages -->
+    <script>
+        (() => {
+            const music = document.getElementById("bgMusic");
+            const btn = document.getElementById("musicBtn");
+
+            const savedTime = localStorage.getItem("musicTime");
+            const wasPlaying = localStorage.getItem("musicPlaying") === "true";
+
+            music.addEventListener("loadedmetadata", () => {
+                if (savedTime !== null && music.duration) {
+                    music.currentTime = Number(savedTime) % music.duration;
+                }
+
+                if (wasPlaying) {
+                    music.play().catch(() => {
+                        console.log("Click the Music button to start playback.");
+                    });
+                }
+            });
+
+            btn.addEventListener("click", () => {
+                if (music.paused) {
+                    music.play().then(() => {
+                        localStorage.setItem("musicPlaying", "true");
+                    }).catch(() => {
+                        localStorage.setItem("musicPlaying", "false");
+                    });
+                } else {
+                    music.pause();
+                    localStorage.setItem("musicPlaying", "false");
+                }
+            });
+
+            music.addEventListener("timeupdate", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+
+            window.addEventListener("pagehide", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+        })();
+    </script>
+
+</body>
+</html>

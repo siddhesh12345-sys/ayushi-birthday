@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5d9e">
+
+    <title>Let's Celebrate Ayushi!</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body data-page="celebration">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <a class="brand" href="index.html">
+            ✨ For Ayushi
+        </a>
+
+        <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="memories.html">Memories</a>
+            <a href="letter.html">A Letter</a>
+            <a class="active" href="celebration.html">Celebrate</a>
+            <a href="surprise.html">Surprise</a>
+        </nav>
+
+    </header>
+
+    <!-- CELEBRATION SECTION -->
+    <main class="celebrate-wrap">
+
+        <div class="confetti-bg"></div>
+
+        <p class="eyebrow">It's your day!</p>
+
+        <h1 class="page-title">
+            Make a <span>Wish, Ayushi!</span> 🎂
+        </h1>
+
+        <p class="page-intro">
+            Take a deep breath, close your eyes and make your biggest birthday wish.
+        </p>
+
+        <!-- BIRTHDAY CAKE -->
+        <div class="cake" aria-label="Birthday cake">
+
+            <div class="candle">
+                <i></i>
+            </div>
+
+            <div class="icing"></div>
+            <div class="cake-top"></div>
+            <div class="cake-bottom"></div>
+            <div class="plate"></div>
+
+        </div>
+
+        <button class="btn primary" id="celebrateBtn">
+            Celebrate! 🎉
+        </button>
+
+        <p id="celebrateMessage" class="celebrate-message">
+            Sending you a sky full of happiness!
+        </p>
+
+        <!-- NEXT PAGE BUTTON -->
+        <div class="center" style="margin-top: 25px;">
+            <a class="btn secondary" href="surprise.html">
+                One Last Surprise 🎁 →
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        Blow out the candles and let the magic begin! ✨
+    </footer>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio
+        id="bgMusic"
+        src="music/birthday-song.mp3"
+        preload="auto"
+        loop>
+    </audio>
+
+    <button
+        class="music-toggle"
+        id="musicBtn"
+        aria-label="Play or pause background music">
+
+        ♫ <span>Music</span>
+
+    </button>
+
+    <!-- MUSIC SCRIPT -->
+    <script>
+
+        (() => {
+
+            const music = document.getElementById("bgMusic");
+            const btn = document.getElementById("musicBtn");
+
+            // Restore previous music settings
+            const savedTime = localStorage.getItem("musicTime");
+
+            const wasPlaying =
+                localStorage.getItem("musicPlaying") === "true";
+
+            // Restore music position
+            music.addEventListener("loadedmetadata", () => {
+
+                if (savedTime !== null && music.duration > 0) {
+
+                    const position = Number(savedTime);
+
+                    if (Number.isFinite(position)) {
+                        music.currentTime = position % music.duration;
+                    }
+
+                }
+
+                // Resume music if it was playing previously
+                if (wasPlaying) {
+
+                    music.play().catch(() => {
+                        console.log("Click Music to start playback.");
+                    });
+
+                }
+
+            });
+
+            // Save music position
+            music.addEventListener("timeupdate", () => {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+            // Music play/pause button
+            btn.addEventListener("click", () => {
+
+                if (music.paused) {
+
+                    music.play().then(() => {
+
+                        localStorage.setItem(
+                            "musicPlaying",
+                            "true"
+                        );
+
+                    }).catch((error) => {
+
+                        console.log(error);
+
+                    });
+
+                } else {
+
+                    music.pause();
+
+                    localStorage.setItem(
+                        "musicPlaying",
+                        "false"
+                    );
+
+                }
+
+            });
+
+            // Save position before leaving page
+            window.addEventListener("pagehide", () => {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>

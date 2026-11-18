@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5d9e">
+
+    <title>Happy Birthday Ayushi! ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2b102f, #521b4b, #8b315e);
+            color: #fff0f6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+
+        .site-header {
+            width: 100%;
+            padding: 20px 7%;
+            background: rgba(30, 8, 35, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #ff9bc5;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #ffe0ed;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff83b5;
+        }
+
+        /* Main Section */
+
+        .final-birthday {
+            width: 100%;
+            min-height: 85vh;
+            padding: 75px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 130, 181, 0.15);
+            border: 1px solid #ff83b5;
+            color: #ffafd0;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .intro-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(35px, 6vw, 55px);
+            color: #ffd1e4;
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-size: clamp(32px, 6vw, 65px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ff9bc5;
+            text-shadow: 0 4px 25px rgba(255, 105, 170, 0.35);
+            margin: 15px 0 30px;
+        }
+
+        .final-message {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .final-message p {
+            color: #ffe6f0;
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .final-emojis {
+            font-size: 38px;
+            letter-spacing: 8px;
+            margin: 25px 0;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            color: #ffafd0;
+            font-size: 35px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* Thank You Section */
+
+        .final-thankyou {
+            width: 100%;
+            max-width: 700px;
+            margin: 45px auto 0;
+            padding: 35px 25px;
+            border: 1px solid rgba(255, 166, 205, 0.5);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .final-thankyou h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(35px, 5vw, 48px);
+            color: #ffafd0;
+            margin-bottom: 15px;
+        }
+
+        .final-thankyou p {
+            color: #fff0f6;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .hearts {
+            font-size: 35px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+
+        .site-footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(25, 5, 30, 0.6);
+            color: #ffd1e4;
+            font-size: 13px;
+        }
+
+        /* Music Button */
+
+        .music-toggle {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            background: #ff75ad;
+            color: #35102d;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .music-toggle:hover {
+            background: #ffc0da;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 650px) {
+            .site-header {
+                padding: 18px;
+            }
+
+            .nav-wrap {
+                justify-content: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .final-birthday {
+                padding: 55px 18px;
+            }
+
+            .final-message p {
+                font-size: 14px;
+            }
+
+            .final-thankyou {
+                padding: 28px 18px;
+            }
+
+            .final-thankyou p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="nav-wrap">
+
+            <a href="index.html" class="logo">Ayushi ❤️</a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="memories.html">Memories</a>
+                <a href="letter.html">A Letter</a>
+                <a href="celebration.html">Celebrate</a>
+                <a href="surprise.html">Surprise</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Final Birthday Wish -->
+    <main class="final-birthday">
+
+        <div class="eyebrow">
+            🎉 ONE LAST WISH 🎉
+        </div>
+
+        <h2 class="intro-title">
+            Once Again...
+        </h2>
+
+        <h1 class="main-title">
+            HAPPY BIRTHDAY<br>
+            AYUSHI! ❤️
+        </h1>
+
+        <div class="final-message">
+
+            <p>
+                May your life always be filled with endless happiness,
+                beautiful memories, unlimited laughter and unforgettable
+                moments. May all your dreams come true and may you achieve
+                everything your heart wishes for. 🌸
+            </p>
+
+            <p>
+                Thank you for being such a special part of my life.
+                No matter where life takes us, our friendship will
+                always remain special. Keep smiling, keep shining
+                and never stop being the amazing person you are! 🥹💗
+            </p>
+
+            <div class="final-emojis">
+                🎂 🎁 💖 🥳 🌸
+            </div>
+
+            <div class="signature">
+                Lots of Love,<br>
+                Your Best Friend ❤️
+            </div>
+
+        </div>
+
+        <!-- Thank You -->
+        <section class="final-thankyou">
+
+            <h2>Thank You! ❤️</h2>
+
+            <p>
+                Have a Beautiful Day, Ayushi! 🌸✨
+                <br>
+                Keep Smiling and Keep Shining! 💫
+                <br>
+                You Deserve All the Happiness in the World! 🥰
+            </p>
+
+            <div class="hearts">
+                💗 🎂 🥰 💖
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        Made with endless love for Ayushi. ❤️
+    </footer>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" src="music/birthday-song.mp3"
+        preload="auto" loop></audio>
+
+    <button class="music-toggle" id="musicBtn" type="button">
+        ♫ Music
+    </button>
+
+    <script>
+        (() => {
+            const music = document.getElementById("bgMusic");
+            const musicBtn = document.getElementById("musicBtn");
+
+            const savedTime = localStorage.getItem("musicTime");
+            const wasPlaying =
+                localStorage.getItem("musicPlaying") === "true";
+
+            music.addEventListener("loadedmetadata", () => {
+                if (savedTime && music.duration) {
+                    music.currentTime =
+                        Number(savedTime) % music.duration;
+                }
+
+                if (wasPlaying) {
+                    music.play().catch(() => {});
+                }
+            });
+
+            music.addEventListener("timeupdate", () => {
+                if (!music.paused) {
+                    localStorage.setItem(
+                        "musicTime",
+                        music.currentTime
+                    );
+                }
+            });
+
+            musicBtn.addEventListener("click", () => {
+                if (music.paused) {
+                    music.play().then(() => {
+                        localStorage.setItem("musicPlaying", "true");
+                    }).catch(() => {});
+                } else {
+                    music.pause();
+                    localStorage.setItem("musicPlaying", "false");
+                }
+            });
+
+            window.addEventListener("pagehide", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+        })();
+    </script>
+
+</body>
+</html>

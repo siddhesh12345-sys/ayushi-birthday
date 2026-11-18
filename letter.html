@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff5d9e">
+
+    <title>A Letter for Ayushi ❤️</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+
+    <style>
+        .letter-wrap {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 25px;
+        }
+
+        .letter-card {
+            background: #fff0f6;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(255, 93, 158, 0.18);
+            line-height: 1.9;
+            color: #513044;
+        }
+
+        .letter-card h1 {
+            text-align: center;
+            color: #ff5d9e;
+            margin-bottom: 25px;
+        }
+
+        .letter-card p {
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .letter-sign {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #ff5d9e;
+        }
+
+        .next-page {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media(max-width:600px) {
+            .letter-card {
+                padding: 25px;
+            }
+
+            .letter-wrap {
+                margin: 30px auto;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body data-page="letter">
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <a class="brand" href="index.html">
+            ✨ For Ayushi
+        </a>
+
+        <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="memories.html">Memories</a>
+            <a class="active" href="letter.html">A Letter</a>
+            <a href="celebration.html">Celebrate</a>
+            <a href="surprise.html">Surprise</a>
+        </nav>
+
+    </header>
+
+    <!-- LETTER SECTION -->
+
+    <main class="letter-wrap">
+
+        <div class="letter-card">
+
+            <h1>A Little Letter for You 💌</h1>
+
+            <p>Dear Ayushi, ❤️</p>
+
+            <p>
+                First of all, a very Happy Birthday to you!
+                🎂🥳
+            </p>
+
+            <p>
+                Some people come into our lives and make everything
+                a little more beautiful. You are one of those
+                special people. I'm genuinely lucky to have you
+                as my best friend.
+            </p>
+
+            <p>
+                From our silly conversations to our unforgettable
+                memories, every little moment with you has become
+                something special. Thank you for all the laughter,
+                happiness, support and beautiful memories.
+            </p>
+
+            <p>
+                I hope you never stop smiling, dreaming and being
+                the amazing person you are. May every new chapter
+                of your life bring endless happiness, success,
+                love and beautiful surprises.
+            </p>
+
+            <p>
+                No matter how busy life gets or how many miles
+                separate us, some friendships will always remain
+                close to the heart. And ours is one of them. 🫂
+            </p>
+
+            <p>
+                Always remember that you deserve all the happiness
+                in this world. Keep shining, keep laughing and
+                keep being YOU! ✨
+            </p>
+
+            <p>
+                Happy Birthday once again, Ayushi!
+                Thank you for being YOU. ❤️
+            </p>
+
+            <div class="letter-sign">
+                With lots of love,<br>
+                Your Best Friend 🥹💗
+            </div>
+
+        </div>
+
+        <!-- NEXT PAGE BUTTON -->
+
+        <div class="next-page">
+            <a href="celebration.html" class="btn primary">
+                Next: Let's Celebrate 🎂
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        A friendship written in memories and sealed with love. 💗
+    </footer>
+
+    <!-- BACKGROUND MUSIC -->
+
+    <audio
+        id="bgMusic"
+        src="music/birthday-song.mp3"
+        preload="auto"
+        loop>
+    </audio>
+
+    <button
+        class="music-toggle"
+        id="musicBtn"
+        aria-label="Play or pause background music">
+
+        ♫ <span>Music</span>
+
+    </button>
+
+    <!-- MUSIC SCRIPT -->
+
+    <script>
+
+        (() => {
+
+            const music = document.getElementById("bgMusic");
+            const btn = document.getElementById("musicBtn");
+
+            const savedTime = localStorage.getItem("musicTime");
+            const wasPlaying =
+                localStorage.getItem("musicPlaying") === "true";
+
+            music.addEventListener("loadedmetadata", function () {
+
+                if (savedTime !== null && music.duration > 0) {
+
+                    const position = Number(savedTime);
+
+                    if (Number.isFinite(position)) {
+                        music.currentTime = position % music.duration;
+                    }
+
+                }
+
+                if (wasPlaying) {
+                    music.play().catch(function () {
+                        console.log("Press Music to start playback.");
+                    });
+                }
+
+            });
+
+            music.addEventListener("timeupdate", function () {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+            btn.addEventListener("click", function () {
+
+                if (music.paused) {
+
+                    music.play().then(function () {
+
+                        localStorage.setItem(
+                            "musicPlaying",
+                            "true"
+                        );
+
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+
+                } else {
+
+                    music.pause();
+
+                    localStorage.setItem(
+                        "musicPlaying",
+                        "false"
+                    );
+
+                }
+
+            });
+
+            window.addEventListener("pagehide", function () {
+
+                localStorage.setItem(
+                    "musicTime",
+                    music.currentTime
+                );
+
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>

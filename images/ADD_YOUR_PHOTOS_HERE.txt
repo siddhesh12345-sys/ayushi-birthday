@@ -1,0 +1,8 @@
+Put your photos in this folder and use these exact filenames:
+ayushi-main.jpg	
+photo1.jpg	 
+photo2.jpg	
+photo3.jpg	
+photo4.jpg
+JPG, PNG or WebP photos work if you also update the matching filename in the HTML.
+Use your own photos and make sure you have permission to share them.

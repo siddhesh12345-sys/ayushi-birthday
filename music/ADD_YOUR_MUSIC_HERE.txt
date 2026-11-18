@@ -1,0 +1,6 @@
+Add an MP3 audio file in this folder and name it:
+birthday-song.mp3
+
+The website will play it when the visitor clicks the Music button.
+Use music you own or have permission to use. Browsers generally block autoplay until a visitor interacts.
+
